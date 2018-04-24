@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.gdaib.mapper.VisitorMapper">
+	<!-- 查询访客信息 -->
+	<select id="getVisitorList" resultType="visitor">
+		select * from visitor
+	</select>
+	
+	<!-- 根据访客身份证号码查询访客信息 -->
+	<select id="getVisitorById" resultType="visitor" parameterType="long">
+		select * from visitor where id = #{id}
+	</select>
+	
+	<!-- 增加访客信息 -->
+	<insert id="insertVisitor" parameterType="visitor">
+		insert into visitor(id,times) values (#{id},#{times})
+	</insert>
+	
+	<!-- 当访客再一次访问病人时，修改访客的访问次数 -->
+	<update id="updateVisitor" parameterType="visitor">
+		update visitor set times = #{times} where id = #{id}
+	</update>
+	
+	<!-- 删除访客信息 -->
+	<delete id="deleteVisitor" parameterType="long">
+		delete from visitor where id = #{id} 
+	</delete>
+</mapper>

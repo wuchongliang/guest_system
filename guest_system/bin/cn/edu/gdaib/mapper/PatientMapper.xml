@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.gdaib.mapper.PatientMapper">
+	<!-- 查询病人信息 -->
+ 	<select id="getPatientList" resultType="patient">
+ 		select * from patient
+ 	</select>
+ 	
+ 	<!-- 根据病人姓名模糊查询 -->
+ 	<select id="getPatientByName" parameterType="String" resultType="patient">
+ 		select * from patient where name like '%${value}%'
+ 	</select>
+ 	
+ 	<!-- 添加病人信息-->
+ 	<insert id="insertPatient" parameterType="patient">
+ 		insert into patient(name,phone) values (#{name},#{phone})
+ 	</insert>
+ 	
+ 	<!-- 修改病人信息 -->
+ 	<update id="updatePatientById" parameterType="patient">
+ 		update patient set name= #{name},phone= #{phone} where id= #{id}
+ 	</update>
+ 	
+ 	<!-- 删除病人信息 -->
+	<update id="delectPatientById" parameterType="long">
+		DELETE from patient where id = #{id}
+	</update>
+</mapper>

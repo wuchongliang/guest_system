@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.gdaib.mapper.SecurityrolesMapper">
+
+	<!-- 添加保安信息 -->
+	<insert id="insertSecurity" parameterType="securityroles">
+		insert into securityroles(name,phone,duty_time) values (#{name},#{phone},#{duty_time})	
+	</insert>
+	
+	<!-- 查询保安信息，根据值班时间查询 -->
+	<select id="getSecurityrolesList" parameterType="String" resultType="securityroles">
+		select * from securityroles where duty_time = #{duty_time}
+	</select>
+</mapper>
