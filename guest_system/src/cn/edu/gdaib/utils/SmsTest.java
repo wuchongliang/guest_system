@@ -29,11 +29,11 @@ import cn.edu.gdaib.mapper.SecurityrolesMapper;
 public class SmsTest {
 	
 	public static void main(String[] args) throws Exception {
-		smsTest();
+		//smsTest();
 		//searchSms();
 		Date date = new Date();
 		System.out.println(date);
-		System.out.println(date.getHours());
+		System.out.println(date.getHours());  
 	}
 	
 	
